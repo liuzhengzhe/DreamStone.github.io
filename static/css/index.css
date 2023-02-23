@@ -175,3 +175,14 @@ body {
 .mask-c {
   color: rgb(41, 160, 177);
 }
+
+
+.videoCard{
+  dislay: inline-grid;
+  grid-template-columns: 326px 326px 326px;
+}
+
+.videoCad .item{
+  width: 326px;
+  padding: 10px 10px 10px 10px
+}
