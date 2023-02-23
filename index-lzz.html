@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ISS++: Image as Stepping Stone for Text-Guided 3D Shape Generation.">
+  <meta name="keywords" content="ISS++">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISS++: Image as Stepping Stone for Text-Guided 3D Shape Generation.</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/videos/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ISS++: Image as Stepping Stone for Text-Guided 3D Shape Generation.</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Zhengzhe Liu<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Peng Dai<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Ruihui Li<sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Xiaojuan Qi<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Chi-Wing Fu<sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong <sup>2</sup>The University of Hong Kong</span>
+            <span class="author-block"><sup>3</sup>Hunan University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2209.04145"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/liuzhengzhe/ISS-Image-as-Stepping-Stone-for-Text-Guided-3D-Shape-Generation"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="static/videos/video.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"A lamp imitating an apple."</p>
+          <video id="teaser1" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_apple.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_avocado"</p>
+          <video id="teaser2" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_avocado.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_banana"</p>
+          <video id="teaser3" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_banana.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_umbrella"</p>
+          <video id="teaser4" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_oil_paper_umbrella.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_rabbit"</p>
+          <video id="teaser5" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_rabbit.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_shell"</p>
+          <video id="teaser6" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_shell.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_teddy_bear"</p>
+          <video id="teaser7" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_teddy_bear.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_imitating_the_mushroom"</p>
+          <video id="teaser8" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_imitating_the_mushroom.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a_lamp_with_rainbow_texture"</p>
+          <video id="teaser9" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_lamp_with_rainbow_texture.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item has-text-centered">
+          <p class="caption global-prompt">"a green bedside lamp"</p>
+          <video id="teaser10" autoplay controls muted loop playsinline height="50%">
+            <source src="static/videos/a_green_bedside_lamp.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Generating 3D shapes using text guidance is a challenging task due to the lack of large paired text-shape datasets, the
+significant semantic gap between these two modalities, and the structural complexity of 3D shapes. In this paper, we introduce a novel
+framework, called Image as Stepping Stone (ISS), that employs 2D images as stepping stone to connect the two modalities, eliminating
+the need for paired text-shape data. Our key contribution is a two-stage feature-space alignment approach that leverages a pre-trained
+single-view reconstruction (SVR) model to map CLIP features to shapes: first map the CLIP image feature to the detail-rich shape space
+in the SVR model, then map the CLIP text feature to the shape space by encouraging consistency between the input text and rendered
+images. We also propose a text-guided shape stylization module that can enhance the output shapes with novel structures and textures.
+Additionally, our approach is flexible. It can be used with various SVR models to further enhance the generative scope and quality. Our
+extended approach, ISS++, leverages pre-trained text-to-image diffusion models to enhance the generative diversity, fidelity, and
+stylization capability. Also, it can further expand our generative scope beyond the image dataset. Our experimental results demonstrate
+that our approach outperforms the state-of-the-art methods and our baselines in terms of fidelity and consistency with text. Additionally,
+our approach can stylize the generated shapes with both realistic and fantastical structures and textures.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <figure>
+          <img src="static/videos/overview.PNG" width=100%/>
+        </figure>
+        <div class="content has-text-justified">
+          <p>
+            Our text-guided 3D shape generation framework comprises three main stages:
+(a) In the first stage, we leverage a pre-trained single-view reconstruction (SVR) model to align the feature spaces of the CLIP image feature space $\Omega_{\text{I}}$ and the shape space $\Omega_{\text{S}}$ of the SVR model. We train the CLIP2Shape mapper $M$ to map images to shapes while keeping $E_\text{S}$ and $E_\text{I}$ frozen, and fine-tune the decoder $D$ using an additional background loss $L_{\text{bg}}$. During training, we stop the gradients from the SVR loss $L_D$ and the background loss $L_{\text{bg}}$ propagating to $M$.
+(b) In the second stage, we fix the decoder $D$ and fine-tune the mapper $M$ to $M'$ by encouraging CLIP consistency between the input text $T$ and the rendered images at test time.
+(c and d) Finally, we optimize the quality and style of the generated shape and texture of $S$ for $T$. 
+At inference time, we use the second stage to generate the 3D shape from the input text $T$, and (c d) are optional.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <!-- <div class="container is-max-desktop">
+          <div class="hero-body">
+            <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="static/videos/video.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div> -->
+
+        <div class="container is-max-desktop">
+          <div class="hero-body">
+            <table width="100%" align="center">
+              <tr>
+                <td><video autoplay controls muted loop playsinline width="100%"><source src="static/videos/a_3D_model_of_an_adorable_cottage_with_a_thatched_roof1.mp4" type="video/mp4"></video></td>
+                <td><video autoplay controls muted loop playsinline width="100%"><source src="static/videos/a_ambulance_car.mp4" type="video/mp4"></video></td>
+                <td><video autoplay controls muted loop playsinline width="100%"><source src="static/videos/a_computer_monitor.mp4" type="video/mp4"></video></td>
+                <td><video autoplay controls muted loop playsinline width="100%"><source src="static/videos/a_green_bedside_lamp.mp4" type="video/mp4"></video></td>
+              </tr>
+              <tr>
+                <td width=25% class="caption global-prompt">a_3D_model_of_an_adorable_cottage_with_a_thatched_roof1</td>
+                <td width=25% class="caption global-prompt">a_ambulance_car</td>
+                <td width=25% class="caption global-prompt">a_computer_monitor</td>
+                <td width=25% class="caption global-prompt"><b>a_green_bedside_lamp</b></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered"> -->
+
+      <!-- Visual Effects. -->
+      <!-- <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div> -->
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <!-- <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              As a byproduct of our method, we can also solve the matting problem by ignoring
+              samples that fall outside of a bounding box during rendering.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2> -->
+
+        <!-- Interpolating. -->
+        <!-- <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="https://homes.cs.washington.edu/~kpar/nerfies/videos/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="https://homes.cs.washington.edu/~kpar/nerfies/videos/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!--/ Re-rendering. -->
+
+      <!-- </div>
+    </div> -->
+    <!--/ Animation. -->
+
+
+  <!-- </div>
+</section> -->
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{liu2023iss,
+  author    = {Liu, Zhengzhe and Dai, Peng and Li, Ruihui and Qi, Xiaojuan and Fu, Chi-Wing},
+  title     = {ISS++: Image as Stepping Stone for Text-Guided 3D Shape Generation},
+  journal   = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The website code is borrowed from the source code of <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We thank the authors for sharing the templates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
