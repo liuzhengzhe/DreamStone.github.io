@@ -178,7 +178,7 @@ body {
 
 
 .videoCard{
-  dislay: inline-grid;
+  display: inline-grid;
   grid-template-columns: 326px 326px 326px;
 }
 
