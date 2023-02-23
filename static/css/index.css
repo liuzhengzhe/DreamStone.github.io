@@ -107,9 +107,6 @@ body {
     height: 100%;
 }
 
-.publication-body img {
-}
-
 .results-carousel {
   overflow: hidden;
 }
@@ -154,4 +151,27 @@ body {
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+.caption {
+  font-size: 1.2rem;
+}
+
+.global-prompt {
+  color: black;
+}
+
+.publication-body img {
+}
+
+.mask-a {
+  color: rgb(242, 78, 112);
+}
+
+.mask-b {
+  color: rgb(255, 176, 1);
+}
+
+.mask-c {
+  color: rgb(41, 160, 177);
 }
