@@ -275,7 +275,7 @@ our approach can stylize the generated shapes with both realistic and fantastica
     </div>
     <!--/ Abstract. -->
 
-    <!-- Method. -->
+    <!-- Method. 
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
@@ -284,19 +284,35 @@ our approach can stylize the generated shapes with both realistic and fantastica
         </figure>
         <div class="content has-text-justified">
           <p>
-            Our text-guided 3D shape generation framework comprises three main stages:
+            Two-stage feature-space alignment:
 (a) In the first stage, we leverage a pre-trained single-view reconstruction (SVR) model to align the feature spaces of the CLIP image feature space $\Omega_{\text{I}}$ and the shape space $\Omega_{\text{S}}$ of the SVR model. We train the CLIP2Shape mapper $M$ to map images to shapes while keeping $E_\text{S}$ and $E_\text{I}$ frozen, and fine-tune the decoder $D$ using an additional background loss $L_{\text{bg}}$. During training, we stop the gradients from the SVR loss $L_D$ and the background loss $L_{\text{bg}}$ propagating to $M$.
 (b) In the second stage, we fix the decoder $D$ and fine-tune the mapper $M$ to $M'$ by encouraging CLIP consistency between the input text $T$ and the rendered images at test time.
-(c and d) Finally, we optimize the quality and style of the generated shape and texture of $S$ for $T$. 
-At inference time, we use the second stage to generate the 3D shape from the input text $T$, and (c d) are optional.
           </p>
         </div>
       </div>
     </div>
     <!--/ Method. -->
+    
+    -->
 
 
-
+    <!--
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <figure>
+          <img src="static/images/stylization.png" width=100%/>
+        </figure>
+        <div class="content has-text-justified">
+          <p>
+            Text-guided stylization. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+    
+    -->
 
 
 
